@@ -204,13 +204,93 @@
         }
         .cta-btn:hover { transform: scale(1.1); box-shadow: 0 0 30px rgba(204, 255, 0, 0.4); }
 
-        /* --- Responsiveness --- */
-        @media (max-width: 1100px) {
-            .hero { flex-direction: column; justify-content: center; text-align: center; height: auto; padding-top: 150px; }
-            .hero-content { margin-bottom: 50px; }
-            .hero-img-container { margin-left: 0; width: 300px; height: 400px; }
-            .hero h1 { font-size: 5rem; }
+        /* --- Responsiveness Perfeccionado --- */
+        
+        /* Ajuste para Laptops y Tablets */
+        @media (max-width: 1200px) {
+            .hero { padding: 0 5%; gap: 2rem; }
+            .hero h1 { font-size: 6rem; }
+            section { padding: 8rem 2rem; }
         }
+
+        /* Tablets y pantallas medianas (Solución al solapamiento) */
+        @media (max-width: 992px) {
+            header { padding: 1rem 5%; }
+            nav .links a:not(.nav-cv) { display: none; } /* Ocultar enlaces para evitar amontonamiento */
+            
+            .hero { 
+                flex-direction: column; 
+                text-align: center; 
+                height: auto; 
+                padding-top: 120px;
+                padding-bottom: 60px;
+            }
+
+            .hero-content { 
+                max-width: 100%; 
+                margin-bottom: 3rem;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-img-container { 
+                margin-left: 0; 
+                width: min(350px, 80vw); 
+                height: auto;
+                aspect-ratio: 4/5.5;
+                transform: rotate(0deg); /* Quitar rotación para evitar scroll horizontal */
+            }
+
+            /* Perfil (About) */
+            #about > div { 
+                grid-template-columns: 1fr !important; 
+                gap: 2rem; 
+            }
+        }
+
+        /* Móviles (Ajuste de textos y cuadrículas) */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: clamp(3.5rem, 12vw, 5rem); }
+            .hero h2 { font-size: 1.2rem; }
+            .section-title { font-size: 3rem; margin-bottom: 3rem; }
+            
+            /* Asegurar que las tarjetas de proyectos no se rompan */
+            .project-grid { 
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            }
+
+            /* Ajuste de tarjetas de experiencia */
+            .experience-header { 
+                flex-direction: column; 
+                align-items: flex-start; 
+                gap: 0.5rem; 
+            }
+            
+            .experience-badge { 
+                position: static; 
+                transform: none; 
+                width: fit-content; 
+                margin-top: 1rem;
+                padding: 5px 20px;
+            }
+        }
+
+        /* Pantallas muy pequeñas (iPhone SE) */
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 3.2rem; }
+            section { padding: 5rem 1rem; }
+            .section-title { font-size: 2.5rem; }
+            
+            .soft-skill-tag { 
+                font-size: 1.1rem; 
+                padding: 0.6rem 1.2rem; 
+            }
+        }
+
+        /* Prevención global de desbordamiento horizontal */
+        * { max-width: 100%; }
+
     </style>
 </head>
 
