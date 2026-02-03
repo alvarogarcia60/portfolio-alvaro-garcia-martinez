@@ -79,6 +79,20 @@
             color: black;
         }
 
+        /* Botón Idioma */
+        .lang-btn {
+            background: transparent;
+            border: 1px solid var(--accent-blue);
+            color: var(--accent-blue);
+            padding: 2px 8px;
+            cursor: pointer;
+            font-family: 'Bebas Neue';
+            border-radius: 4px;
+            margin-right: 10px;
+            transition: 0.3s;
+        }
+        .lang-btn:hover { background: var(--accent-blue); color: black; }
+
         /* --- Hero Section --- */
         .hero {
             height: 100vh;
@@ -112,7 +126,7 @@
         .section-title::after { content: ""; position: absolute; left: 0; bottom: 0; width: 60px; height: 5px; background: var(--accent-lime); }
         .glass { background: var(--glass); border: 1px solid var(--glass-border); backdrop-filter: blur(6px); }
 
-        /* --- Career Milestones (Experience) --- */
+        /* --- Experience --- */
         .experience-card {
             position: relative; padding: 2.5rem; border-radius: 20px;
             overflow: hidden; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -140,7 +154,7 @@
         .experience-badge.blue { background: var(--accent-blue); }
         .experience-badge.lime { background: var(--accent-lime); }
 
-        /* --- Academic Projects --- */
+        /* --- Projects --- */
         .project-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -175,7 +189,7 @@
         .github-link { font-size: 1.6rem; color: #fff; opacity: 0.6; transition: 0.3s; }
         .github-link:hover { opacity: 1; color: var(--accent-blue); transform: scale(1.1); }
 
-        /* --- Hard Skills & Soft Skills --- */
+        /* --- Skills --- */
         .skills-container {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;
         }
@@ -205,92 +219,34 @@
         .cta-btn:hover { transform: scale(1.1); box-shadow: 0 0 30px rgba(204, 255, 0, 0.4); }
 
         /* --- Responsiveness Perfeccionado --- */
-        
-        /* Ajuste para Laptops y Tablets */
         @media (max-width: 1200px) {
             .hero { padding: 0 5%; gap: 2rem; }
             .hero h1 { font-size: 6rem; }
             section { padding: 8rem 2rem; }
         }
-
-        /* Tablets y pantallas medianas (Solución al solapamiento) */
         @media (max-width: 992px) {
             header { padding: 1rem 5%; }
-            nav .links a:not(.nav-cv) { display: none; } /* Ocultar enlaces para evitar amontonamiento */
-            
-            .hero { 
-                flex-direction: column; 
-                text-align: center; 
-                height: auto; 
-                padding-top: 120px;
-                padding-bottom: 60px;
-            }
-
-            .hero-content { 
-                max-width: 100%; 
-                margin-bottom: 3rem;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .hero-img-container { 
-                margin-left: 0; 
-                width: min(350px, 80vw); 
-                height: auto;
-                aspect-ratio: 4/5.5;
-                transform: rotate(0deg); /* Quitar rotación para evitar scroll horizontal */
-            }
-
-            /* Perfil (About) */
-            #about > div { 
-                grid-template-columns: 1fr !important; 
-                gap: 2rem; 
-            }
+            nav .links a:not(.nav-cv) { display: none; } 
+            .hero { flex-direction: column; text-align: center; height: auto; padding-top: 120px; padding-bottom: 60px; }
+            .hero-content { max-width: 100%; margin-bottom: 3rem; display: flex; flex-direction: column; align-items: center; }
+            .hero-img-container { margin-left: 0; width: min(350px, 80vw); height: auto; aspect-ratio: 4/5.5; transform: rotate(0deg); }
+            #about > div { grid-template-columns: 1fr !important; gap: 2rem; }
         }
-
-        /* Móviles (Ajuste de textos y cuadrículas) */
         @media (max-width: 768px) {
             .hero h1 { font-size: clamp(3.5rem, 12vw, 5rem); }
             .hero h2 { font-size: 1.2rem; }
             .section-title { font-size: 3rem; margin-bottom: 3rem; }
-            
-            /* Asegurar que las tarjetas de proyectos no se rompan */
-            .project-grid { 
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            }
-
-            /* Ajuste de tarjetas de experiencia */
-            .experience-header { 
-                flex-direction: column; 
-                align-items: flex-start; 
-                gap: 0.5rem; 
-            }
-            
-            .experience-badge { 
-                position: static; 
-                transform: none; 
-                width: fit-content; 
-                margin-top: 1rem;
-                padding: 5px 20px;
-            }
+            .project-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+            .experience-header { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+            .experience-badge { position: static; transform: none; width: fit-content; margin-top: 1rem; padding: 5px 20px; }
         }
-
-        /* Pantallas muy pequeñas (iPhone SE) */
         @media (max-width: 480px) {
             .hero h1 { font-size: 3.2rem; }
             section { padding: 5rem 1rem; }
             .section-title { font-size: 2.5rem; }
-            
-            .soft-skill-tag { 
-                font-size: 1.1rem; 
-                padding: 0.6rem 1.2rem; 
-            }
+            .soft-skill-tag { font-size: 1.1rem; padding: 0.6rem 1.2rem; }
         }
-
-        /* Prevención global de desbordamiento horizontal */
         * { max-width: 100%; }
-
     </style>
 </head>
 
@@ -303,24 +259,24 @@
                 <h3 style="font-size: 1.5rem;">ÁLVARO <span style="color: var(--accent-lime);">GARCÍA MARTÍNEZ</span></h3>
             </div>
             <div class="links">
-                <a href="#about">Perfil</a>
-                <a href="#experience">Experiencia</a>
-                <a href="#projects">Proyectos</a>
-                <a href="#education">Formación</a> 
-                <a href="#skills">Skills</a>
-                <a href="#contact">Contacto</a>
-                <a href="docs/Curriculum_AlvaroGarciaMartinez.pdf" download="Curriculum_AlvaroGarciaMartinez.pdf" class="nav-cv"><i class="bi bi-download"></i> CV</a>            </div>
+                <button id="lang-switch" class="lang-btn">EN</button>
+                <a href="#about" data-section="nav-about">Perfil</a>
+                <a href="#experience" data-section="nav-experience">Experiencia</a>
+                <a href="#projects" data-section="nav-projects">Proyectos</a>
+                <a href="#education" data-section="nav-education">Formación</a> 
+                <a href="#skills" data-section="nav-skills">Skills</a>
+                <a href="#contact" data-section="nav-contact">Contacto</a>
+                <a href="docs/Curriculum_AlvaroGarciaMartinez.pdf" download class="nav-cv"><i class="bi bi-download"></i> CV</a>
+            </div>
         </nav>
     </header>
 
     <section class="hero">
         <div class="hero-content">
-            <h2>Estudiante de Ingeniería Informática // Especializado en TI</h2>
+            <h2 data-section="hero-h2">Estudiante de Ingeniería Informática // Especializado en TI</h2>
             <h1>TECH <span>&</span><br>STYLE</h1>
-            <p>
-                Exigente con mi trabajo y atento al detalle. El Front-End es el ámbito que más me atrae por la forma en que diseño, claridad y lógica se combinan para comunicar.
-            </p>
-            <a href="#experience" class="cta-btn">Ver trayectoria</a>
+            <p data-section="hero-p">Exigente con mi trabajo y atento al detalle. El Front-End es el ámbito que más me atrae por la forma en que diseño, claridad y lógica se combinan para comunicar.</p>
+            <a href="#experience" class="cta-btn" data-section="hero-cta">Ver trayectoria</a>
         </div>
         <div class="hero-img-container">
             <img src="img/yo2.jpeg" alt="Álvaro García Martínez">
@@ -328,37 +284,33 @@
     </section>
 
     <section id="about">
-        <h3 class="section-title">PROFESSIONAL OVERVIEW</h3>
+        <h3 class="section-title" data-section="about-title">PROFESSIONAL OVERVIEW</h3>
         <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: start;">
             <div class="hero-content" style="padding-right: 20px;">
-                <p style="font-size: 1.2rem; line-height: 1.8; color: #fff; margin-bottom: 2rem; position: relative; padding-left: 20px; border-left: 3px solid var(--accent-lime);">
+                <p style="font-size: 1.2rem; line-height: 1.8; color: #fff; margin-bottom: 2rem; position: relative; padding-left: 20px; border-left: 3px solid var(--accent-lime);" data-section="about-quote">
                     "Estudiante de Ingeniería Informática, exigente con mi trabajo y atento al detalle. El Front-End es el ámbito que más me atrae por la forma en que diseño, claridad y lógica funcional se combinan para comunicar."
                 </p>
-                <p style="font-size: 1.1rem; line-height: 1.8; color: #bbb; margin-bottom: 3rem;">
+                <p style="font-size: 1.1rem; line-height: 1.8; color: #bbb; margin-bottom: 3rem;" data-section="about-p">
                     Me considero una persona con mentalidad abierta y espíritu crítico, afrontando cada proyecto con curiosidad y cuidándolo como una oportunidad de mejora constante. Mi formación técnica se complementa con una sólida experiencia en entornos de alta exigencia logística.
                 </p>
             </div>
             <div class="glass" style="padding: 3rem; border-top: 4px solid var(--accent-lime); border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.4);">
-                <h4 style="color: var(--accent-lime); margin-bottom: 2rem; font-family: 'Bebas Neue'; font-size: 2rem; letter-spacing: 3px;">
-                    <i class="bi bi-info-circle" style="margin-right: 10px;"></i> DATOS CLAVE
-                </h4>
+                <h4 style="color: var(--accent-lime); margin-bottom: 2rem; font-family: 'Bebas Neue'; font-size: 2rem; letter-spacing: 3px;" data-section="about-keys">DATOS CLAVE</h4>
                 <ul style="list-style: none;">
                     <li style="margin-bottom: 20px; display: flex; align-items: center; gap: 15px;">
                         <i class="bi bi-translate" style="color: var(--accent-blue); font-size: 1.2rem;"></i>
-                        <span style="font-size: 0.95rem;"><strong>Idiomas:</strong> Inglés (B1/B2 en progreso) y Francés</span>
+                        <span style="font-size: 0.95rem;"><strong data-section="key-lang">Idiomas:</strong> <span data-section="val-lang">Inglés (B1/B2 en progreso) y Francés</span></span>
                     </li>
                     <li style="margin-bottom: 20px; display: flex; align-items: center; gap: 15px;">
                         <i class="bi bi-clock-history" style="color: var(--accent-blue); font-size: 1.2rem;"></i>
-                        <span style="font-size: 0.95rem;"><strong>Disponibilidad:</strong> Horaria flexible e inmediata</span>
+                        <span style="font-size: 0.95rem;"><strong data-section="key-time">Disponibilidad:</strong> <span data-section="val-time">Horaria flexible e inmediata</span></span>
                     </li>
                     <li style="margin-bottom: 20px; display: flex; align-items: center; gap: 15px;">
                         <i class="bi bi-car-front" style="color: var(--accent-blue); font-size: 1.2rem;"></i>
-                        <span style="font-size: 0.95rem;"><strong>Movilidad:</strong> Carnet y vehículo propio</span>
+                        <span style="font-size: 0.95rem;"><strong data-section="key-car">Movilidad:</strong> <span data-section="val-car">Carnet y vehículo propio</span></span>
                     </li>
                     <li style="margin-top: 30px; padding: 15px; background: rgba(204, 255, 0, 0.1); border: 1px dashed var(--accent-lime); border-radius: 10px; text-align: center;">
-                        <span style="color: var(--accent-lime); font-weight: 700; font-size: 0.9rem;">
-                            <i class="bi bi-patch-check-fill"></i> APTO PARA PRÁCTICAS
-                        </span>
+                        <span style="color: var(--accent-lime); font-weight: 700; font-size: 0.9rem;" data-section="about-apto"><i class="bi bi-patch-check-fill"></i> APTO PARA PRÁCTICAS</span>
                     </li>
                 </ul>
             </div>
@@ -366,134 +318,96 @@
     </section>
 
     <section id="experience">
-        <h3 class="section-title">CAREER MILESTONES</h3>
+        <h3 class="section-title" data-section="exp-title">CAREER MILESTONES</h3>
         <div class="project-grid">
             <div class="experience-card glass">
                 <div class="experience-header">
                     <span class="experience-year">2025</span>
                     <div class="experience-company">
                         <h4>CEVA Logistics</h4>
-                        <p>Técnico de Apoyo Logístico</p>
+                        <p data-section="exp-role1">Técnico de Apoyo Logístico</p>
                     </div>
                 </div>
-                <div class="experience-body">
-                    <ul>
-                        <li>Verificación y organización de mercancía en punto de expedición.</li>
-                        <li>Optimización del espacio de carga y preparación de pedidos.</li>
-                    </ul>
-                </div>
-                <div class="experience-badge blue">TI & LOGÍSTICA</div>
+                <div class="experience-body"><ul data-section="exp-desc1"><li>Verificación y organización de mercancía en punto de expedición.</li><li>Optimización del espacio de carga y preparación de pedidos.</li></ul></div>
+                <div class="experience-badge blue" data-section="exp-badge1">TI & LOGÍSTICA</div>
             </div>
             <div class="experience-card glass">
                 <div class="experience-header">
                     <span class="experience-year">2022 - 2024</span>
                     <div class="experience-company">
                         <h4>Logisfashion</h4>
-                        <p>Técnico de Apoyo Logístico</p>
+                        <p data-section="exp-role2">Técnico de Apoyo Logístico</p>
                     </div>
                 </div>
-                <div class="experience-body">
-                    <ul>
-                        <li>Control de expediciones y organización de mercancía.</li>
-                        <li>Ejecución de pedidos digitales mediante terminales de radiofrecuencia (PDA).</li>
-                    </ul>
-                </div>
-                <div class="experience-badge lime">DIGITAL OPS</div>
+                <div class="experience-body"><ul data-section="exp-desc2"><li>Control de expediciones y organización de mercancía.</li><li>Ejecución de pedidos digitales mediante terminales de radiofrecuencia (PDA).</li></ul></div>
+                <div class="experience-badge lime" data-section="exp-badge2">DIGITAL OPS</div>
             </div>
         </div>
     </section>
 
     <section id="projects">
-        <h3 class="section-title">ACADEMIC PROJECTS</h3>
-        <p style="font-size: 1.1rem; color: #94a3b8; margin-bottom: 3rem; line-height: 1.6; border-left: 4px solid var(--accent-blue); padding-left: 24px; max-width: 850px;">
-            Esta es una selección de los proyectos clave realizados durante mi formación en Ingeniería Informática, abarcando desde sistemas distribuidos hasta interfaces de usuario de alto impacto.
-        </p>
-
+        <h3 class="section-title" data-section="proj-title">ACADEMIC PROJECTS</h3>
+        <p style="font-size: 1.1rem; color: #94a3b8; margin-bottom: 3rem; line-height: 1.6; border-left: 4px solid var(--accent-blue); padding-left: 24px; max-width: 850px;" data-section="proj-intro">Esta es una selección de los proyectos clave realizados durante mi formación en Ingeniería Informática, abarcando desde sistemas distribuidos hasta interfaces de usuario de alto impacto.</p>
         <div class="project-grid">
             <div class="project-card glass">
                 <div>
-                    <div class="project-card-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
                         <h4>CelebraIt - Event Manager</h4>
                         <a href="https://github.com/alvarogarcia60/isi-celebrait.git" target="_blank" class="github-link"><i class="bi bi-github"></i></a>
                     </div>
-                    <p>Plataforma de eventos basada en microservicios distribuida con Docker y Render.</p>
-                    <div class="project-tech" style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 2rem;">
-                        <span class="tech-tag">Docker</span>
-                        <span class="tech-tag">Flask</span>
-                        <span class="tech-tag">ISI</span>
-                    </div>
+                    <p data-section="proj-p1">Plataforma de eventos basada en microservicios distribuida con Docker y Render.</p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 2rem;"><span class="tech-tag">Docker</span><span class="tech-tag">Flask</span><span class="tech-tag">ISI</span></div>
                 </div>
-                <a href="docs/Presentacion_CelebraIt.pdf" download class="project-btn"><i class="bi bi-file-earmark-slides"></i> Presentación</a>
+                <a href="docs/Presentacion_CelebraIt.pdf" download class="project-btn"><i class="bi bi-file-earmark-slides"></i> <span data-section="btn-pres">Presentación</span></a>
             </div>
-
             <div class="project-card glass">
                 <div>
-                    <div class="project-card-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
                         <h4>ClipSmithery Suite</h4>
                         <a href="https://github.com/alvarogarcia60/multimedia-ClipSmithery" target="_blank" class="github-link"><i class="bi bi-github"></i></a>
                     </div>
-                    <p>Procesamiento de vídeo en navegador vía Canvas API y recomendador con Gemini AI.</p>
-                    <div class="project-tech" style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 2rem;">
-                        <span class="tech-tag">Vite/React</span>
-                        <span class="tech-tag">AI</span>
-                        <span class="tech-tag">Multimedia</span>
-                    </div>
+                    <p data-section="proj-p2">Procesamiento de vídeo en navegador vía Canvas API y recomendador con Gemini AI.</p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 2rem;"><span class="tech-tag">Vite/React</span><span class="tech-tag">AI</span><span class="tech-tag">Multimedia</span></div>
                 </div>
-                <a href="docs/Memoria_Multimedia.pdf" download class="project-btn"><i class="bi bi-file-earmark-pdf"></i> Memoria</a>
+                <a href="docs/Memoria_Multimedia.pdf" download class="project-btn"><i class="bi bi-file-earmark-pdf"></i> <span data-section="btn-mem">Memoria</span></a>
             </div>
-
             <div class="project-card glass">
                 <div>
-                    <div class="project-card-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
                         <h4>Pokémon UWP (IPO2)</h4>
                         <a href="https://www.figma.com/proto/mQYJ6IUqLnGxX5AnOOfVkd/PracticaGRUPALPokemon?node-id=1-9" target="_blank" class="github-link"><i class="bi bi-figma"></i></a>
                     </div>
-                    <p>Desarrollo de lógica de combate por turnos y Pokédex en App UWP con Fluent Design.</p>
-                    <div class="project-tech" style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 2rem;">
-                        <span class="tech-tag">C# / XAML</span>
-                        <span class="tech-tag">Figma</span>
-                        <span class="tech-tag">UWP</span>
-                    </div>
+                    <p data-section="proj-p3">Desarrollo de lógica de combate por turnos y Pokédex en App UWP con Fluent Design.</p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 2rem;"><span class="tech-tag">C# / XAML</span><span class="tech-tag">Figma</span><span class="tech-tag">UWP</span></div>
                 </div>
-                <a href="https://pruebasaluuclm-my.sharepoint.com/:u:/r/personal/raul_santiago1_alu_uclm_es/Documents/PracticaGrupalAGM_RSR.zip?csf=1&web=1&e=r3Eabd" target="_blank" class="project-btn"><i class="bi bi-download"></i> Descargar App</a>
+                <a href="https://pruebasaluuclm-my.sharepoint.com/:u:/r/personal/raul_santiago1_alu_uclm_es/Documents/PracticaGrupalAGM_RSR.zip?csf=1&web=1&e=r3Eabd" target="_blank" class="project-btn"><i class="bi bi-download"></i> <span data-section="btn-app">Descargar App</span></a>
             </div>
-
             <div class="project-card glass">
                 <div>
-                    <div class="project-card-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
                         <h4>IA Finanzas (GSI)</h4>
                         <a href="docs/IA_Finanzas_y_Banca_Garcia_Lopez.pdf" download class="github-link"><i class="bi bi-file-earmark-pdf"></i></a>
                     </div>
-                    <p>Investigación sobre Machine Learning y Blockchain aplicados a ciberseguridad bancaria.</p>
-                    <div class="project-tech" style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 2rem;">
-                        <span class="tech-tag">IA/ML</span>
-                        <span class="tech-tag">FinTech</span>
-                        <span class="tech-tag">GSI</span>
-                    </div>
+                    <p data-section="proj-p4">Investigación sobre Machine Learning y Blockchain aplicados a ciberseguridad bancaria.</p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 2rem;"><span class="tech-tag">IA/ML</span><span class="tech-tag">FinTech</span><span class="tech-tag">GSI</span></div>
                 </div>
-                <a href="docs/IA_Finanzas_y_Banca_Garcia_Lopez.pdf" download class="project-btn"><i class="bi bi-file-earmark-pdf"></i> Leer Estudio</a>
+                <a href="docs/IA_Finanzas_y_Banca_Garcia_Lopez.pdf" download class="project-btn"><i class="bi bi-file-earmark-pdf"></i> <span data-section="btn-read">Leer Estudio</span></a>
             </div>
         </div>
     </section>
 
     <section id="education">
-        <h3 class="section-title">Formación Académica</h3>
+        <h3 class="section-title" data-section="edu-title">Formación Académica</h3>
         <div class="glass" style="padding: 3rem; border-radius: 20px; border-right: 4px solid var(--accent-blue); margin-bottom: 3rem;">
             <div style="display: flex; align-items: flex-start; gap: 2rem; flex-wrap: wrap;">
                 <div style="font-size: 4rem; color: var(--accent-blue);"><i class="bi bi-mortarboard"></i></div>
                 <div>
                     <h4 style="font-size: 2rem; color: var(--accent-blue); font-family: 'Bebas Neue'; letter-spacing: 1px;">Universidad de Castilla-La Mancha (UCLM)</h4>
-                    <p style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--accent-lime);">Grado en Ingeniería Informática</p>
-                    <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 1.5rem;"><i class="bi bi-calendar3"></i> 2022 – Actualidad | Ciudad Real, España</p>
+                    <p style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--accent-lime);" data-section="edu-deg1">Grado en Ingeniería Informática</p>
+                    <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 1.5rem;"><i class="bi bi-calendar3"></i> <span data-section="edu-time1">2022 – Actualidad | Ciudad Real, España</span></p>
                     <div style="border-top: 1px solid var(--glass-border); display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; padding-top: 1.5rem;">
-                        <p style="font-size: 0.85rem; line-height: 1.6;">
-                            <strong style="color: white;">Enfoque Principal:</strong><br>
-                            Especialización en Tecnologías de la Información (TI) con gran interés en el desarrollo de interfaces Front-End.
-                        </p>
-                        <p style="font-size: 0.85rem; line-height: 1.6;">
-                            <strong style="color: white;">Estado Académico:</strong><br>
-                            Apto para realización de prácticas curriculares y extracurriculares.
-                        </p>
+                        <p style="font-size: 0.85rem; line-height: 1.6;"><strong style="color: white;" data-section="edu-f1">Enfoque Principal:</strong><br><span data-section="edu-d1">Especialización en Tecnologías de la Información (TI) con gran interés en el desarrollo de interfaces Front-End.</span></p>
+                        <p style="font-size: 0.85rem; line-height: 1.6;"><strong style="color: white;" data-section="edu-f2">Estado Académico:</strong><br><span data-section="edu-d2">Apto para realización de prácticas curriculares y extracurriculares.</span></p>
                     </div>
                 </div>
             </div>
@@ -503,86 +417,127 @@
                 <div style="font-size: 3.5rem; color: var(--accent-lime);"><i class="bi bi-book"></i></div>
                 <div>
                     <h4 style="font-size: 1.8rem; color: #fff; font-family: 'Bebas Neue'; letter-spacing: 1px;">IES Carpetania</h4>
-                    <p style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--accent-blue);">Bachillerato Tecnológico</p>
-                    <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 1.5rem;"><i class="bi bi-calendar3"></i> 2020 – 2022 | Yepes, Toledo</p>
-                    <div style="border-top: 1px solid var(--glass-border); padding-top: 1.5rem;">
-                        <p style="font-size: 0.85rem; line-height: 1.6; color: #bbb;">
-                            Formación centrada en fundamentos científicos y tecnológicos necesarios para la Ingeniería Informática.
-                        </p>
-                    </div>
+                    <p style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--accent-blue);" data-section="edu-deg2">Bachillerato Tecnológico</p>
+                    <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 1.5rem;"><i class="bi bi-calendar3"></i> <span data-section="edu-time2">2020 – 2022 | Yepes, Toledo</span></p>
+                    <div style="border-top: 1px solid var(--glass-border); padding-top: 1.5rem;"><p style="font-size: 0.85rem; line-height: 1.6; color: #bbb;" data-section="edu-d3">Formación centrada en fundamentos científicos y tecnológicos necesarios para la Ingeniería Informática.</p></div>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="skills">
-        <h3 class="section-title">HARD SKILLS</h3>
+        <h3 class="section-title" data-section="skills-title">HARD SKILLS</h3>
         <div class="skills-container" style="margin-bottom: 5rem;">
-            <div class="skill-card">
-                <h4>Core Development</h4>
-                <p>Java, Python, HTML, CSS, JavaScript.</p>
+            <div class="skill-card"><h4 data-section="sk-h1">Core Development</h4><p data-section="sk-p1">Java, Python, HTML, CSS, JavaScript.</p>
                 <div class="skill-logos">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" class="skill-logo" alt="Java">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="skill-logo" alt="Python">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" class="skill-logo" alt="HTML5">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" class="skill-logo" alt="CSS3">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" class="skill-logo" alt="JS">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" class="skill-logo">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="skill-logo">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" class="skill-logo">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" class="skill-logo">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" class="skill-logo">
                 </div>
             </div>
-            <div class="skill-card">
-                <h4>Architecture & Data</h4>
-                <p>Spring Boot, APIs REST y MySQL.</p>
+            <div class="skill-card"><h4 data-section="sk-h2">Architecture & Data</h4><p data-section="sk-p2">Spring Boot, APIs REST y MySQL.</p>
                 <div class="skill-logos">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" class="skill-logo" alt="Spring">
-                    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" class="skill-logo" alt="MySQL" style="filter: invert(1);">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" class="skill-logo">
+                    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" class="skill-logo" style="filter: invert(1);">
                     <i class="bi bi-cloud-arrow-down-fill" style="font-size: 1.5rem; color: #fff;"></i>
                 </div>
             </div>
-            <div class="skill-card">
-                <h4>DevOps & Workflow</h4>
-                <p>Git, Linux y VS Code.</p>
+            <div class="skill-card"><h4 data-section="sk-h3">DevOps & Workflow</h4><p data-section="sk-p3">Git, Linux y VS Code.</p>
                 <div class="skill-logos">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" class="skill-logo" alt="Git">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" class="skill-logo" alt="Linux" style="filter: invert(1);">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" class="skill-logo" alt="VSCode">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" class="skill-logo">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" class="skill-logo" style="filter: invert(1);">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" class="skill-logo">
                 </div>
             </div>
         </div>
-        <h3 class="section-title">SOFT SKILLS</h3>
+        <h3 class="section-title" data-section="soft-title">SOFT SKILLS</h3>
         <div class="glass" style="padding: 3rem; display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; border-radius: 20px;">
-            <span class="soft-skill-tag">ORGANIZACIÓN</span>
-            <span class="soft-skill-tag">RESPONSABILIDAD</span>
-            <span class="soft-skill-tag">PROACTIVIDAD</span>
-            <span class="soft-skill-tag">ADAPTABILIDAD</span>
-            <span class="soft-skill-tag">COMPROMISO</span>
-            <span class="soft-skill-tag">CREATIVIDAD</span>
-            <span class="soft-skill-tag">CRITERIO</span>
+            <span class="soft-skill-tag" data-section="s1">ORGANIZACIÓN</span><span class="soft-skill-tag" data-section="s2">RESPONSABILIDAD</span><span class="soft-skill-tag" data-section="s3">PROACTIVIDAD</span><span class="soft-skill-tag" data-section="s4">ADAPTABILIDAD</span><span class="soft-skill-tag" data-section="s5">COMPROMISO</span><span class="soft-skill-tag" data-section="s6">CREATIVIDAD</span><span class="soft-skill-tag" data-section="s7">CRITERIO</span>
         </div>
     </section>
 
     <section id="contact" style="text-align: center;">
-        <h3 style="font-size: 6rem; opacity: 0.1; margin-bottom: -3rem; font-family: 'Bebas Neue';">CONTACTO</h3>
+        <h3 style="font-size: 6rem; opacity: 0.1; margin-bottom: -3rem; font-family: 'Bebas Neue';" data-section="cont-bg">CONTACTO</h3>
         <div class="glass" style="padding: 4rem; max-width: 800px; margin: auto; border-radius: 20px;">
-            <h2 style="font-size: 3rem; margin-bottom: 1rem;">¿EMPEZAMOS EL PARTIDO?</h2>
-            <p style="margin-bottom: 2.5rem; font-weight: 300; color: #ccc;">Disponible para prácticas e incorporación inmediata.</p>
-            <a href="mailto:Alvaro.garcia60@alu.uclm.es" class="cta-btn">Enviar Email</a>
+            <h2 style="font-size: 3rem; margin-bottom: 1rem;" data-section="cont-h2">¿EMPEZAMOS EL PARTIDO?</h2>
+            <p style="margin-bottom: 2.5rem; font-weight: 300; color: #ccc;" data-section="cont-p">Disponible para prácticas e incorporación inmediata.</p>
+            <a href="mailto:Alvaro.garcia60@alu.uclm.es" class="cta-btn" data-section="cont-btn">Enviar Email</a>
             <div style="margin-top: 3rem; font-family: 'Montserrat';">
                 <p style="color: var(--accent-lime); font-weight: 700; font-size: 1.1rem; margin-bottom: 1rem;"><i class="bi bi-envelope-at"></i> Alvaro.garcia60@alu.uclm.es</p>
                 <div style="display: flex; justify-content: center; gap: 20px; font-size: 0.9rem; color: #94a3b8;">
-                    <p><i class="bi bi-geo-alt"></i> Ciudad Real, España</p>
+                    <p><i class="bi bi-geo-alt"></i> <span data-section="cont-loc">Ciudad Real, España</span></p>
                     <p><i class="bi bi-telephone"></i> 697 869 688</p>
                 </div>
-                <div style="margin-top: 1.5rem;">
-                    <a href="https://www.linkedin.com/in/alvarogarci12" target="_blank" style="color: var(--accent-blue); text-decoration: none; font-weight: 600;">
-                        <i class="bi bi-linkedin"></i> linkedin.com/in/alvarogarci12
-                    </a>
-                </div>
+                <div style="margin-top: 1.5rem;"><a href="https://www.linkedin.com/in/alvarogarci12" target="_blank" style="color: var(--accent-blue); text-decoration: none; font-weight: 600;"><i class="bi bi-linkedin"></i> linkedin.com/in/alvarogarci12</a></div>
             </div>
         </div>
     </section>
 
-    <footer style="padding: 4rem; text-align: center; font-size: 0.8rem; letter-spacing: 2px; color: #555; border-top: 1px solid var(--glass-border);">
+    <footer style="padding: 4rem; text-align: center; font-size: 0.8rem; letter-spacing: 2px; color: #555; border-top: 1px solid var(--glass-border);" data-section="footer">
         © 2026 ALVARO GARCÍA MARTÍNEZ // ENGINEERED FOR STYLE
-    </footer> 
+    </footer>
+
+    <script>
+        const translations = {
+            es: {
+                "nav-about": "Perfil", "nav-experience": "Experiencia", "nav-projects": "Proyectos", "nav-education": "Formación", "nav-skills": "Skills", "nav-contact": "Contacto",
+                "hero-h2": "Estudiante de Ingeniería Informática // Especializado en TI",
+                "hero-p": "Exigente con mi trabajo y atento al detalle. El Front-End es el ámbito que más me atrae por la forma en que diseño, claridad y lógica se combinan para comunicar.",
+                "hero-cta": "Ver trayectoria",
+                "about-title": "PROFESSIONAL OVERVIEW",
+                "about-quote": '"Estudiante de Ingeniería Informática, exigente con mi trabajo y atento al detalle. El Front-End es el ámbito que más me atrae por la forma en que diseño, claridad y lógica funcional se combinan para comunicar."',
+                "about-p": "Me considero una persona con mentalidad abierta y espíritu crítico, afrontando cada proyecto con curiosidad y cuidándolo como una oportunidad de mejora constante. Mi formación técnica se complementa con una sólida experiencia en entornos de alta exigencia logística.",
+                "about-keys": "DATOS CLAVE", "key-lang": "Idiomas:", "val-lang": "Inglés (B1/B2 en progreso) y Francés", "key-time": "Disponibilidad:", "val-time": "Horaria flexible e inmediata", "key-car": "Movilidad:", "val-car": "Carnet y vehículo propio", "about-apto": "APTO PARA PRÁCTICAS",
+                "exp-title": "CAREER MILESTONES", "exp-role1": "Técnico de Apoyo Logístico", "exp-desc1": "<li>Verificación y organización de mercancía en punto de expedición.</li><li>Optimización del espacio de carga y preparación de pedidos.</li>", "exp-badge1": "TI & LOGÍSTICA",
+                "exp-role2": "Técnico de Apoyo Logístico", "exp-desc2": "<li>Control de expediciones y organización de mercancía.</li><li>Ejecución de pedidos digitales mediante terminales de radiofrecuencia (PDA).</li>", "exp-badge2": "DIGITAL OPS",
+                "proj-title": "ACADEMIC PROJECTS", "proj-intro": "Esta es una selección de los proyectos clave realizados durante mi formación en Ingeniería Informática, abarcando desde sistemas distribuidos hasta interfaces de usuario de alto impacto.",
+                "proj-p1": "Plataforma de eventos basada en microservicios distribuida con Docker y Render.", "btn-pres": "Presentación",
+                "proj-p2": "Procesamiento de vídeo en navegador vía Canvas API y recomendador con Gemini AI.", "btn-mem": "Memoria",
+                "proj-p3": "Desarrollo de lógica de combate por turnos y Pokédex en App UWP con Fluent Design.", "btn-app": "Descargar App",
+                "proj-p4": "Investigación sobre Machine Learning y Blockchain aplicados a ciberseguridad bancaria.", "btn-read": "Leer Estudio",
+                "edu-title": "Formación Académica", "edu-deg1": "Grado en Ingeniería Informática", "edu-time1": "2022 – Actualidad | Ciudad Real, España", "edu-f1": "Enfoque Principal:", "edu-d1": "Especialización en Tecnologías de la Información (TI) con gran interés en el desarrollo de interfaces Front-End.", "edu-f2": "Estado Académico:", "edu-d2": "Apto para realización de prácticas curriculares y extracurriculares.",
+                "edu-deg2": "Bachillerato Tecnológico", "edu-time2": "2020 – 2022 | Yepes, Toledo", "edu-d3": "Formación centrada en fundamentos científicos y tecnológicos necesarios para la Ingeniería Informática.",
+                "sk-h1": "Core Development", "sk-p1": "Java, Python, HTML, CSS, JavaScript.", "sk-h2": "Architecture & Data", "sk-p2": "Spring Boot, APIs REST y MySQL.", "sk-h3": "DevOps & Workflow", "sk-p3": "Git, Linux y VS Code.",
+                "soft-title": "SOFT SKILLS", "s1": "ORGANIZACIÓN", "s2": "RESPONSABILIDAD", "s3": "PROACTIVIDAD", "s4": "ADAPTABILIDAD", "s5": "COMPROMISO", "s6": "CREATIVIDAD", "s7": "CRITERIO",
+                "cont-bg": "CONTACTO", "cont-h2": "¿EMPEZAMOS EL PARTIDO?", "cont-p": "Disponible para prácticas e incorporación inmediata.", "cont-btn": "Enviar Email", "cont-loc": "Ciudad Real, España", "footer": "© 2026 ALVARO GARCÍA MARTÍNEZ // ENGINEERED FOR STYLE"
+            },
+            en: {
+                "nav-about": "Profile", "nav-experience": "Experience", "nav-projects": "Projects", "nav-education": "Education", "nav-skills": "Skills", "nav-contact": "Contact",
+                "hero-h2": "Computer Engineering Student // IT Specialist",
+                "hero-p": "Demanding with my work and attentive to detail. Front-End is the field that attracts me most because of the way design and logic combine to communicate.",
+                "hero-cta": "View Career",
+                "about-title": "PROFESSIONAL PROFILE",
+                "about-quote": '"Computer Engineering student, demanding with my work and attentive to detail. Front-End is what drives me through design and functional logic."',
+                "about-p": "I consider myself an open-minded person with a critical spirit, facing every project with curiosity and treating it as an opportunity for constant improvement. My technical background is complemented by solid experience in high-demand logistics environments.",
+                "about-keys": "KEY DATA", "key-lang": "Languages:", "val-lang": "English (B1/B2 in progress) and French", "key-time": "Availability:", "val-time": "Immediate and flexible schedule", "key-car": "Mobility:", "val-car": "Driving license and own vehicle", "about-apto": "INTERNSHIP READY",
+                "exp-title": "CAREER MILESTONES", "exp-role1": "Logistics Support Technician", "exp-desc1": "<li>Merchandise verification and organization at the dispatch point.</li><li>Loading space optimization and order preparation.</li>", "exp-badge1": "IT & LOGISTICS",
+                "exp-role2": "Logistics Support Technician", "exp-desc2": "<li>Dispatch control and merchandise organization.</li><li>Digital order execution using radio frequency terminals (PDA).</li>", "exp-badge2": "DIGITAL OPS",
+                "proj-title": "ACADEMIC PROJECTS", "proj-intro": "A selection of key projects developed during my Computer Engineering studies, ranging from distributed systems to high-impact user interfaces.",
+                "proj-p1": "Microservices-based events platform distributed with Docker and Render.", "btn-pres": "Presentation",
+                "proj-p2": "In-browser video processing via Canvas API and recommender system with Gemini AI.", "btn-mem": "Report",
+                "proj-p3": "Turn-based combat logic and Pokédex development in UWP App with Fluent Design.", "btn-app": "Download App",
+                "proj-p4": "Research on Machine Learning and Blockchain applied to banking cybersecurity.", "btn-read": "Read Study",
+                "edu-title": "Academic Background", "edu-deg1": "Degree in Computer Engineering", "edu-time1": "2022 – Present | Ciudad Real, Spain", "edu-f1": "Main Focus:", "edu-d1": "IT Specialization with a strong interest in Front-End interface development.", "edu-f2": "Academic Status:", "edu-d2": "Eligible for curricular and extracurricular internships.",
+                "edu-deg2": "Technological Baccalaureate", "edu-time2": "2020 – 2022 | Yepes, Toledo", "edu-d3": "Training focused on scientific and technological foundations necessary for Computer Engineering.",
+                "sk-h1": "Core Development", "sk-p1": "Java, Python, HTML, CSS, JavaScript.", "sk-h2": "Architecture & Data", "sk-p2": "Spring Boot, REST APIs, and MySQL.", "sk-h3": "DevOps & Workflow", "sk-p3": "Git, Linux, and VS Code.",
+                "soft-title": "SOFT SKILLS", "s1": "ORGANIZATION", "s2": "RESPONSIBILITY", "s3": "PROACTIVITY", "s4": "ADAPTABILITY", "s5": "COMMITMENT", "s6": "CREATIVITY", "s7": "JUDGMENT",
+                "cont-bg": "CONTACT", "cont-h2": "READY TO START THE MATCH?", "cont-p": "Available for internships and immediate start.", "cont-btn": "Send Email", "cont-loc": "Ciudad Real, Spain", "footer": "© 2026 ALVARO GARCÍA MARTÍNEZ // ENGINEERED FOR STYLE"
+            }
+        };
+
+        let currentLang = 'es';
+        const langBtn = document.getElementById('lang-switch');
+
+        langBtn.addEventListener('click', () => {
+            currentLang = currentLang === 'es' ? 'en' : 'es';
+            langBtn.textContent = currentLang === 'es' ? 'EN' : 'ES';
+            document.querySelectorAll('[data-section]').forEach(el => {
+                const key = el.getAttribute('data-section');
+                if (translations[currentLang][key]) el.innerHTML = translations[currentLang][key];
+            });
+        });
+    </script>
 </body>
 </html>
