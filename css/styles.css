@@ -1,33 +1,73 @@
 /* 1. CONFIGURACIÓN BASE Y VARIABLES */
 :root {
   --bg-black: #050505;
-  --accent-lime: #ccff00; /* Color neón deportivo */
-  --accent-blue: #00d4ff; /* Azul Tech */
+  --bg-gradient: radial-gradient(circle at center, #1a1a2e 0%, #050505 100%);
+  --accent-lime: #ccff00; 
+  --accent-blue: #00d4ff; 
   --glass: rgba(255, 255, 255, 0.03);
   --glass-border: rgba(255, 255, 255, 0.1);
   --text-main: #ffffff;
+  --text-secondary: #ccc;
+  --shadow-color: rgba(204, 255, 0, 0.2);
+  --card-bg: rgba(255, 255, 255, 0.03);
+}
+
+/* --- MODO CLARO: MÁXIMA LEGIBILIDAD (NEGRO SOBRE BLANCO) --- */
+body.light-mode {
+  --bg-black: #ffffff;
+  --bg-gradient: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  
+  /* Negro absoluto para el texto */
+  --text-main: #000000;       
+  --text-secondary: #1a1a1a;  
+  
+  /* Colores de acento más oscuros para contraste en blanco */
+  --accent-lime: #5a7a00;     
+  --accent-blue: #0052cc;     
+  
+  --glass: rgba(255, 255, 255, 1); /* Opaco total para tarjetas */
+  --glass-border: rgba(0, 0, 0, 0.2);
+  --shadow-color: rgba(0, 0, 0, 0.15);
+  --card-bg: #ffffff;
+}
+
+/* BARRA DE PROGRESO */
+#scroll-progress {
+    position: fixed; top: 0; left: 0; width: 0%; height: 4px;
+    background: linear-gradient(90deg, var(--accent-blue), var(--accent-lime));
+    z-index: 2000; transition: width 0.1s;
+}
+
+/* CURSOR DINÁMICO */
+#custom-cursor {
+    width: 20px; height: 20px; border: 2px solid var(--accent-lime);
+    border-radius: 50%; position: fixed; pointer-events: none;
+    z-index: 9999; transition: transform 0.1s ease-out;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: difference;
+    background: white;
 }
 
 body {
-    font-family: 'Montserrat', sans-serif; /* Fuente limpia para tech */
-    background: radial-gradient(circle at center, #1a1a2e 0%, #050505 100%);
+    font-family: 'Montserrat', sans-serif;
+    background: var(--bg-gradient);
     background-attachment: fixed;
     color: var(--text-main);
     overflow-x: hidden;
     scroll-behavior: smooth;
+    transition: background 0.4s ease, color 0.4s ease;
 }
 
 /* 2. TIPOGRAFÍAS DE IMPACTO */
-h1, .section-title { 
+h1, .section-title, h3, h4 { 
     font-family: 'Bebas Neue', cursive; 
     letter-spacing: 2px; 
 }
 
-/* Título Hero con efecto brillo neón animado */
 h1 {
-    font-size: 6rem;
+    font-size: clamp(4rem, 10vw, 8rem);
     line-height: 0.9;
-    background: linear-gradient(90deg, #fff, var(--accent-blue), #fff);
+    background: linear-gradient(90deg, var(--text-main), var(--accent-blue), var(--text-main));
     background-size: 200% auto;
     -webkit-background-clip: text;
     background-clip: text;
@@ -37,92 +77,106 @@ h1 {
 
 @keyframes shine { to { background-position: 200% center; } }
 
-/* 3. COMPONENTES GLASSMORPHISM */
-.glass-nav {
-    background: rgba(0, 0, 0, 0.8) !important;
+/* 3. COMPONENTES GLASSMORPHISM Y TARJETAS */
+header {
+    position: fixed; width: 100%; top: 0; padding: 1.5rem; z-index: 1000;
+    transition: 0.3s;
+}
+header.scrolled {
+    background: var(--glass);
     backdrop-filter: blur(15px);
     border-bottom: 1px solid var(--glass-border);
 }
 
-.glass-card {
-    background: var(--glass);
+.glass-card, .experience-card, .project-card, .skill-card {
+    background: var(--card-bg) !important;
     backdrop-filter: blur(12px);
     border: 1px solid var(--glass-border);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    color: var(--text-main);
 }
 
-.glass-card:hover {
+.glass-card:hover, .project-card:hover, .experience-card:hover {
     border-color: var(--accent-lime);
     transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 10px 30px rgba(204, 255, 0, 0.2);
+    box-shadow: 0 10px 30px var(--shadow-color);
 }
 
-/* 4. IDENTIDAD VISUAL (Fútbol & Moda) */
-.shadow-neon {
-    box-shadow: 0 0 25px rgba(0, 212, 255, 0.5);
-    border: 3px solid var(--accent-blue) !important;
+/* REGLA DE FUERZA PARA MODO CLARO: TEXTO NEGRO PURO */
+body.light-mode p, 
+body.light-mode li, 
+body.light-mode h1, 
+body.light-mode h2, 
+body.light-mode h3, 
+body.light-mode h4, 
+body.light-mode span,
+body.light-mode strong,
+body.light-mode .project-card h4,
+body.light-mode .experience-company h4,
+body.light-mode .section-title {
+    color: #000000 !important;
+    opacity: 1 !important;
+    -webkit-text-fill-color: #000000 !important; /* Corrige el efecto shine del H1 */
 }
 
+/* Ajuste específico para etiquetas técnicas en modo claro */
+body.light-mode .tech-tag {
+    background: #000000 !important;
+    color: #ccff00 !important;
+    border: none;
+}
+
+/* 4. IDENTIDAD VISUAL */
 .profile-img {
     max-width: 280px;
-    filter: grayscale(100%); /* Toque de revista de moda */
+    filter: grayscale(100%);
     transition: all 0.5s ease;
 }
 
 .profile-img:hover {
     filter: grayscale(0%) brightness(1.1);
     transform: rotate(-3deg);
-    filter: brightness(1.1) drop-shadow(0 0 15px #00d4ff); 
+    filter: brightness(1.1) drop-shadow(0 0 15px var(--accent-blue)); 
 }
 
 /* 5. TRAYECTORIA (Timeline) */
-.timeline { 
-    border-left: 3px solid var(--accent-blue); 
-    padding-left: 35px; 
-    margin-left: 20px;
-}
-
+.timeline { border-left: 3px solid var(--accent-blue); padding-left: 35px; margin-left: 20px; }
 .timeline-item { position: relative; padding-bottom: 2rem; }
-
 .timeline-item::before {
-    content: ''; 
-    background: var(--accent-lime); 
-    width: 16px; 
-    height: 16px;
-    border-radius: 50%; 
-    position: absolute; 
-    left: -45px; 
-    top: 8px;
+    content: ''; background: var(--accent-lime); width: 16px; height: 16px;
+    border-radius: 50%; position: absolute; left: -43px; top: 8px;
     box-shadow: 0 0 15px var(--accent-lime);
 }
 
-/* 6. SKILLS ESTILO "STATS" DEPORTIVAS */
-.skill-card h4 {
-    color: var(--accent-lime);
-    text-transform: uppercase;
-    font-size: 1.2rem;
-}
+/* 6. SKILLS */
+.skill-card h4 { color: var(--accent-lime); text-transform: uppercase; font-size: 1.5rem; }
 
-.skill-card p {
-    font-weight: 300;
-    font-size: 0.9rem;
-    color: #ccc;
-}
-
-/* 7. BOTONES DE ACCIÓN (Call to Action) */
+/* 7. BOTONES DE ACCIÓN */
 .cta-btn {
     padding: 1rem 3rem;
     background: var(--accent-lime);
-    color: black;
+    color: #000000 !important; /* Siempre negro para que se vea sobre el verde */
     text-decoration: none;
     font-weight: 800;
     text-transform: uppercase;
     display: inline-block;
     clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
     transition: 0.3s;
+    border: none;
 }
 
 .cta-btn:hover {
     transform: scale(1.1);
-    box-shadow: 0 0 30px rgba(204, 255, 0, 0.6);
+    box-shadow: 0 0 30px var(--accent-lime);
+}
+
+/* 8. AJUSTES RESPONSIVE */
+@media (min-width: 1025px) {
+    * { cursor: none !important; }
+}
+
+@media (max-width: 1024px) {
+    #custom-cursor { display: none; }
+    h1 { font-size: 3.5rem; }
+    nav .links a:not(.nav-cv):not(.lang-btn) { display: none; }
 }
